@@ -1,0 +1,1 @@
+#Q49.Write a program to print result status using match case.
