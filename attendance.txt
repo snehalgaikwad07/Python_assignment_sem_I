@@ -1,0 +1,9 @@
+--- Attendance Sheet ---
+Amit : 2/2 = 100.0%
+Sneha : 2/2 = 100.0%
+Rahul : 1/2 = 50.0%
+Priya : 2/2 = 100.0%
+Karan : 1/2 = 50.0%
+--- Defaulter List ---
+Rahul - 50.0%
+Karan - 50.0%

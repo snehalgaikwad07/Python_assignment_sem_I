@@ -1,84 +1,67 @@
 #***************** College Attendance Tracker **************************
 
 roll = [1, 2, 3, 4, 5]
+name = ["Amit", "Sneha", "Rahul", "Priya", "Karan"]
+
 att = []
-names = ["Amit", "Sneha", "Rahul", "Priya", "Karan"]
 
 n = int(input("Enter number of lectures: "))
 
 for i in range(n):
     lst = []
-    print("\nLecture", i + 1)
+    print("Lecture", i + 1)
 
     for j in range(len(roll)):
-        a = input(names[j] + " (P/A): ").upper()
-
-        if a == "P":
-            lst.append("P")
-        else:
-            lst.append("A")
+        a = input(name[j] + " (P/A): ").upper()
+        lst.append(a)
 
     att.append(lst)
 
-print("\n--- Attendance Sheet ---")
-print("Name\tAttendance")
+print("--- Attendance Sheet ---")
+
+defaulter = []
 
 for i in range(len(roll)):
     p = 0
 
     for j in range(n):
-        p = p + att[j].count("P")
+        if att[j][i] == "P":
+            p = p + 1
 
-    total = 0
-    for j in range(n):
-        total = total + att[j][i].count("P")
+    per = (p / n) * 100
 
-    per = (total / n) * 100
-    print(names[i], "\t", total, "/", n, "\t", round(per, 2), "%")
-
-# Defaulter report
-defaulter = []
-
-for i in range(len(roll)):
-    total = 0
-
-    for j in range(n):
-        total = total + att[j][i].count("P")
-
-    per = (total / n) * 100
+    print(name[i], ":", p, "/", n, "=", round(per, 2), "%")
 
     if per < 75:
-        defaulter.append([names[i], per])
+        defaulter.append([name[i], per])
 
 defaulter.sort(key=lambda x: x[1])
 
-print("\n--- Defaulter Report ---")
-print("Students below 75% attendance:")
+print("--- Defaulter List ---")
 
 for i in defaulter:
     print(i[0], "-", round(i[1], 2), "%")
 
-# Save output in text file
-f = open("attendance_report.txt", "w")
+f = open("attendance.txt", "w")
 
 f.write("--- Attendance Sheet ---\n")
-f.write("Name\tAttendance Percentage\n")
 
 for i in range(len(roll)):
-    total = 0
+    p = 0
 
     for j in range(n):
-        total = total + att[j][i].count("P")
+        if att[j][i] == "P":
+            p = p + 1
 
-    per = (total / n) * 100
-    f.write(names[i] + "\t" + str(total) + "/" + str(n) +
-             "\t" + str(round(per, 2)) + "%\n")
+    per = (p / n) * 100
 
-f.write("\n--- Defaulter Report ---\n")
+    f.write(name[i] + " : " + str(p) + "/" + str(n) + " = " + str(round(per, 2)) + "%\n")
+
+f.write("--- Defaulter List ---\n")
 
 for i in defaulter:
     f.write(i[0] + " - " + str(round(i[1], 2)) + "%\n")
 
 f.close()
 
-print("\nReport saved in attendance_report.txt")
+print("Attendance saved in attendance.txt")
