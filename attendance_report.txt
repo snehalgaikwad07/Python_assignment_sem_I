@@ -1,0 +1,12 @@
+--- Attendance Sheet ---
+Name	Attendance Percentage
+Amit	2/3	66.67%
+Sneha	2/3	66.67%
+Rahul	1/3	33.33%
+Priya	3/3	100.0%
+Karan	3/3	100.0%
+
+--- Defaulter Report ---
+Rahul - 33.33%
+Amit - 66.67%
+Sneha - 66.67%
